@@ -1,111 +1,107 @@
-<p align="center">
-  <img src="DynamicNotch/Resources/Assets.xcassets/AppIcon.appiconset/logo256.png" alt="DynamicNotch logo" width="96" />
-</p>
+# Notch
 
-<h1 align="center">DynamicNotch</h1>
+**A little space. A lot happening.** A native macOS notch companion by **infynite**.
 
-<p align="center">
-  <strong>The native Dynamic Island and notch experience for macOS.</strong>
-</p>
+Notch turns the top center of your display into a live surface for music,
+timers, downloads, connectivity, hardware controls, and coding-agent status.
+Displays without a camera notch use a floating capsule.
 
-<p align="center">
-  DynamicNotch is a native macOS app for notched MacBooks that turns the notch into a live system surface for media,
-  downloads, AirDrop, timers, screen recording, connectivity events, lock-screen transitions, and custom hardware HUDs.
-</p>
+## Getting started
 
-<p align="center">
-  <a href="https://github.com/jackson-storm/DynamicNotch/releases">
-    <img src="https://img.shields.io/github/downloads/jackson-storm/DynamicNotch/total?style=for-the-badge&label=Downloads&color=green&labelColor=black" alt="GitHub downloads" />
-  </a>
-  <a href="https://github.com/jackson-storm/DynamicNotch/releases/latest">
-    <img src="https://img.shields.io/github/v/release/jackson-storm/DynamicNotch?style=for-the-badge&label=Release&color=blue&labelColor=black" alt="Latest release" />
-  </a>
-  <a href="LICENSE">
-    <img src="https://img.shields.io/github/license/jackson-storm/DynamicNotch?style=for-the-badge&label=License&color=orange&labelColor=black" alt="License" />
-  </a>
-  <img src="https://img.shields.io/badge/macOS-14.6%2B-gray?style=for-the-badge&labelColor=black" alt="macOS 14.6 or later" />
-</p>
+1. Install **Notch.app** in Applications and open it once.
+2. The welcome window explains the overlay and menu-bar controls.
+3. **Left-click the rectangle icon in the top-right menu bar → Settings**.
+   Right-clicking the overlay also opens its settings menu.
+4. Play music or change volume/brightness to see an enabled activity.
+5. Press and hold a supported activity to expand it. Gestures are configurable.
 
-<p align="center">
-  <a href="https://t.me/Dynamic_Notch">
-    <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Ftg.sumanjay.workers.dev%2FDynamic_Notch&style=for-the-badge&label=&color=blue&labelColor=26A5E4&logo=telegram&logoColor=white" alt="Telegram subscribers" />
-  </a>
-  <a href="mailto:evgeniy.petrukovich@icloud.com?subject=A%20question%20about%20Dynamic%20Notch">
-    <img src="https://img.shields.io/badge/-Contact%20Me-blue?style=for-the-badge&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0yMCA0SDRjLTEuMSAwLTIgLjktMiAydjEyYzAgMS4xLjkgMiAyIDJoMTZjMS4xIDAgMi0uOSAyLTJWNmMwLTEuMS0uOS0yLTItMnptMCA0bC04IDUtOC01VjZsOCA1IDgtNXYyeiIvPjwvc3ZnPg%3D%3D&labelColor=0A84FF" alt="Send an email about DynamicNotch" />
-  </a>
-</p>
+Closing a window keeps Notch running. Use the menu-bar **Quit** command to stop it.
+Use **Welcome & Help…** to reopen the introduction.
 
-<p align="center">
-  <img src="assets/DynamicIsland/IslandDesktop.png" alt="DynamicNotch preview" width="49%" />
-  <img src="assets/DynamicIsland/IslandLockScreen.png" alt="DynamicNotch preview" width="49%" />
-</p>
+### A fresh identity
 
-## 🎯 Highlights
+The visible app name is **Notch**, the publisher is **infynite**, and internal
+product names are lowercase `notch`.
 
-- **Live Activities**: Now Playing (media control, album artwork, audio visualizer, customizable progress bar tint style), Downloads progress, AirDrop, Timer, Screen Recording indicator, Focus mode, Personal Hotspot, and Lock Screen media/live activity surfaces.
+- Bundle ID: `in.infynite.notch`
+- Project/module/scheme: `notch`
+- Executable: `Notch.app/Contents/MacOS/notch`
+- Interface: English only, regardless of macOS language
+- Preferences: a fresh domain; old settings and credentials are not imported
 
-- **Temporary Alerts**: Interactive HUD status for battery charging, low/full battery, Bluetooth connections, Wi-Fi, VPN, Focus-off toggling, and notch size modification settings feedback.
+Notch detects running legacy copies and asks to quit them. It never deletes their
+settings. See [NOTICE.md](NOTICE.md) for upstream attribution.
 
-- **Gestures & Swipe Controls**: Native interactive gestures including mouse drag, trackpad swipes, vertical swipe-to-dismiss/restore with adaptive corner radii and swipe-aware blur, and horizontal trackpad/mouse scroll-to-dismiss.
+## Coding-agent companion
 
-- **Fluid Physics Animations**: True-to-life replication of the iOS Dynamic Island's motion design, featuring responsive physics-based spring animations, jelly-like morphing transitions, and synchronized content interpolation that matches the stretch, squash, and elastic behavior of Apple's implementation.
+Open **AI Agents…** from the menu bar, then choose **Connect** for OpenCode V2,
+Codex, or Claude Code. Node.js 18+ is required. Setup uses a stable adapter folder
+under `~/Library/Application Support/in.infynite.notch/agents`.
 
-- **Dynamic Island (Floating Capsule)**: Automatic support for devices without a physical hardware notch (e.g. non-notched MacBooks, iMac, Mac mini, or external monitors). Transitions to a floating capsule shape (`DynamicIslandShape`) when `topInset == 0`, utilizing dynamic, smooth corner radius transitions.
+- OpenCode: the plugin loads through global configuration; `/reload` if needed.
+- Codex: review and trust hooks in `/hooks` or **Settings → Hooks**.
+- Claude Code: review hooks, then start a new session.
 
-## 💻 Preview
+**Verify** tests the local receiver; **Real activity received** confirms a real
+provider event. These are deliberately separate. Send a prompt to complete setup.
+Disconnect removes only Notch's registrations and preserves unrelated settings.
+Existing edited configuration is backed up alongside the original.
 
-<table align="center" cellpadding="0" cellspacing="0" width="100%">
-  <tr>
-    <td align="center" width="10%"><b>Compact</b></td>
-    <td width="45%"><img src="assets/DynamicNotch/NotchCompactNowPlaying.png" alt="Compact Now Playing" width="100%" /></td>
-    <td width="45%"><img src="assets/DynamicIsland/IslandCompactNowPlaying.png" alt="Compact Now Playing" width="100%" /></td>
-  </tr>
-  <tr>
-    <td align="center" width="10%"><b>Expanded</b></td>
-    <td width="45%"><img src="assets/DynamicNotch/NotchNowPlaying.png" alt="Expanded Now Playing" width="100%" /></td>
-    <td width="45%"><img src="assets/DynamicIsland/IslandNowPlaying.png" alt="Expanded Now Playing" width="100%" /></td>
-  </tr>
-</table>
+Working status yields to music. Attention requests take priority. No chat text,
+API keys, source code, or approval decisions travel to Notch. Remote/cloud agent
+sessions cannot access the local socket. See the
+[integration guide](notch/Resources/AIAgentIntegrations/README-AI-AGENTS.md).
 
-> **Note:** This gallery displays only a selection of the events, live activities, and temporary alerts supported by DynamicNotch. Many other states, animations, and system transitions are supported.
+## Build and test
 
-## 📦 Installation
+Use Xcode 26+ with a current macOS SDK. The app targets macOS 14.6+; native adaptive
+icon appearances require macOS 26+. Dependencies resolve through SwiftPM.
 
-1. Download the latest DMG from the [Releases](https://github.com/jackson-storm/DynamicNotch/releases) page.
-2. Drag `DynamicNotch` into `Applications`.
-3. Launch the app.
-4. Grant the permissions needed for the features you want to use.
-5. If macOS blocks the first launch, allow it from `System Settings > Privacy & Security`.
-
-## 🛠️ Build From Source
-
-```bash
-git clone https://github.com/jackson-storm/DynamicNotch.git
-cd DynamicNotch
-open DynamicNotch.xcodeproj
+```sh
+open notch.xcodeproj
+node --test tests/ai-agents/bridge.test.mjs
+python3 scripts/check-branding.py
+xcodebuild -project notch.xcodeproj -scheme notch \
+  -destination 'platform=macOS' CODE_SIGN_IDENTITY=- DEVELOPMENT_TEAM= test
 ```
 
-Then run the `DynamicNotch` scheme from Xcode. Swift Package Manager dependencies are resolved by the project.
+Build without touching Applications:
 
-## 💖 Support
+```sh
+INSTALL_APP=NO bash build_and_install_app.sh
+```
 
-Without your support, the project will not be able to develop. If you would like to support the project, you can do so via:
+The default build is ad-hoc signed, **not Apple-notarized**.
+All distributable outputs use the same repo-local `build/` directory:
+`build/Notch.app`, `build/notch-installer.pkg`, `build/notch.dmg`, and
+`build/notch.zip`. Xcode caches stay underneath `build/notch-derived/`.
 
-- **USDT (TRC-20)**: `TWYo42HQNuXSA5gmVoVV1973ScPqCtduvA`
+## Installers
 
-- **USDT (ERC-20)**: `0xd3261630d7EC2484A3fcf5315f194B58834ab891`
+```sh
+bash build_pkg.sh
+INSTALLER_PATH="$PWD/build/notch-installer.pkg" bash build_dmg.sh
+```
 
-- **Bitcoin (BTC)**: `bc1qw29074zwlp600rhvjat2v7ks53h835tthfj7dx`
+Open `build/notch.dmg` and run **Install Notch.pkg**. macOS Installer requests
+administrator approval when replacing a root-owned installation. Quit old copies
+first. The direct-install script stages a complete app before replacement and
+will not partially delete an installation when permissions are insufficient.
 
-## 🤝 Acknowledgements
+## Updates and releases
 
-Special thanks to the following open-source projects and services that make DynamicNotch possible:
+Sparkle checks **only** the Notch release feed:
+`https://github.com/infynitehq/notch/releases/latest/download/appcast.xml`.
+Automatic checks/downloads are opt-in under **Settings → About → Software Update**.
+Updates must match the new Notch Ed25519 public key; upstream updates cannot
+replace this fork.
 
-- [Lottie for iOS](https://github.com/airbnb/lottie-ios) — for rendering premium, smooth vector animations.
-- [LRCLIB](https://lrclib.net) — for providing the main engine for synchronized lyrics search.
-- [Lyrics.ovh](https://lyrics.ovh) — for serving as a fallback database for static song lyrics.
-- [mediaremote-adapter](https://github.com/ungive/mediaremote-adapter) — for MediaRemote API integration.
+See [releasing](docs/releasing.md) for signing, draft releases, and the remaining
+Apple Developer/notarization prerequisites. Nothing is published by a local build.
 
-## 📄 License
+## Contribute
 
-DynamicNotch is released under the GNU General Public License v3.0. See [LICENSE](LICENSE) for details.
+[Issues](https://github.com/infynitehq/notch/issues) ·
+[Contributing](CONTRIBUTING.md) · [infynite](https://infynite.in)
+
+GNU GPL v3. See [LICENSE](LICENSE) and [NOTICE.md](NOTICE.md).

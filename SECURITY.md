@@ -1,44 +1,18 @@
+# Security
 
-# Security Policy
+For a suspected vulnerability, use private vulnerability reporting on
+https://github.com/infynitehq/notch/security/advisories/new when available.
+If private reporting is unavailable, open an issue asking for a private contact
+without posting exploit details or secrets.
 
-## Supported Versions
+Notch's agent companion is a local awareness display, not an approval mechanism.
+Events from processes running as the same macOS user can be spoofed.
+Never use its status as proof that code, tests, or a command is safe.
 
-| Version | Supported |
-| --- | --- |
-| Latest GitHub release | Yes |
-| Current development branch | Best effort |
-| Older releases | No |
+Public updates must be signed with the Notch Ed25519 key. Release archives are
+verified against the public key embedded in the app before feed generation.
+Apple Developer ID signing and notarization are separate prerequisites for
+Gatekeeper-trusted distribution. Local builds are not notarized.
 
-Security fixes are delivered in the next available release whenever possible.
-If you are testing a local or modified build, please verify the issue against the latest upstream code before reporting it.
-
-## Reporting a Vulnerability
-
-Please do not open a public GitHub issue for suspected security vulnerabilities.
-
-Instead, send a report to **evgeniy.petrukovich@icloud.com** with the subject line:
-
-`DynamicNotch Security Report`
-
-Please include:
-
-- A clear description of the issue
-- The affected version, release tag, or commit hash
-- Your macOS version and Mac model, if relevant
-- Step-by-step reproduction details or a proof of concept
-- The possible impact you identified
-- Any logs, screenshots, or crash details that help reproduce the problem
-
-Reports may be submitted in English or Russian.
-
-## What to Expect
-
-- An acknowledgement within 5 business days when possible
-- Follow-up questions if more detail is needed
-- Status updates during triage and remediation
-- A fix or mitigation in a future release when the issue is confirmed
-
-Please allow reasonable time for investigation and a coordinated fix before public disclosure.
-
-If you are unsure whether something is security-related, report it anyway and it will be triaged.
-
+Please redact API keys, prompts, transcripts, source code, and identifying paths
+when sharing logs. See NOTICE.md for upstream attribution.

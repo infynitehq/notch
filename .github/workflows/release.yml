@@ -1,0 +1,52 @@
+name: Prepare signed Notch update
+on:
+  workflow_dispatch:
+    inputs:
+      allow_non_notarized:
+        description: "I understand this creates a draft, non-notarized release"
+        type: boolean
+        required: true
+        default: false
+permissions:
+  contents: write
+concurrency:
+  group: notch-release
+  cancel-in-progress: false
+jobs:
+  release:
+    if: inputs.allow_non_notarized
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate and build universal app
+        run: |
+          python3 scripts/check-branding.py
+          node --test tests/ai-agents/bridge.test.mjs
+          xcodebuild -project notch.xcodeproj -scheme notch -configuration Release \
+            -destination 'generic/platform=macOS' -derivedDataPath build/notch-derived \
+            -clonedSourcePackagesDirPath build/packages ARCHS='arm64 x86_64' \
+            ONLY_ACTIVE_ARCH=NO CODE_SIGN_IDENTITY=- DEVELOPMENT_TEAM= build -quiet
+          ditto build/notch-derived/Build/Products/Release/Notch.app build/Notch.app
+      - name: Package and cryptographically verify update
+        env:
+          SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
+        run: |
+          test -n "$SPARKLE_PRIVATE_KEY" || { echo "Configure the SPARKLE_PRIVATE_KEY secret first"; exit 1; }
+          ditto -c -k --sequesterRsrc --keepParent build/Notch.app build/notch.zip
+          signer="$(find build/packages/artifacts -path '*/bin/sign_update' -type f -print -quit)"
+          test -n "$signer"
+          signature="$(printf '%s' "$SPARKLE_PRIVATE_KEY" | "$signer" --ed-key-file - -p build/notch.zip)"
+          node scripts/make-appcast.mjs build/Notch.app build/notch.zip "$signature" build/appcast.xml
+          bash build_pkg.sh
+          INSTALLER_PATH="$PWD/build/notch-installer.pkg" OUTPUT_DIR="$PWD/build" bash build_dmg.sh
+      - name: Create draft for manual review
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' build/Notch.app/Contents/Info.plist)
+          gh release create "v$version" build/notch.zip build/notch.dmg \
+            build/notch-installer.pkg build/appcast.xml --draft --target "$GITHUB_SHA" \
+            --title "Notch $version" --notes "Notch by infynite. This build is not Apple-notarized. Review and test before publishing."

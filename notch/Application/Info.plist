@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDisplayName</key>
+	<string>Notch</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Notch needs access to your camera to display a camera preview.</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Notch needs access to your calendar to display upcoming events.</string>
+	<key>NSCalendarsFullAccessUsageDescription</key>
+	<string>Notch needs access to your calendar to display upcoming events.</string>
+	<key>SUFeedURL</key>
+	<string>https://github.com/infynitehq/notch/releases/latest/download/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>ga0m4nh4WzDBjNPySlqj/OTe9kqnL0sHLOK+hk3NLm8=</string>
+	<key>SUEnableAutomaticChecks</key>
+	<false/>
+	<key>SUAllowsAutomaticUpdates</key>
+	<true/>
+	<key>SUScheduledCheckInterval</key>
+	<integer>86400</integer>
+</dict>
+</plist>

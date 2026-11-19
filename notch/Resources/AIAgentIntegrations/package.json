@@ -1,0 +1,8 @@
+{
+  "name": "notch-agents",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./opencode.mjs" },
+  "dependencies": { "@opencode/plugin": "2.3.2" }
+}

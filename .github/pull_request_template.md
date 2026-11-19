@@ -25,12 +25,12 @@ RU: Кратко опишите, что было сделано, зачем, и 
 - [ ] **No regressions:** Neighboring features and existing flows continue to work properly.
 
 #### 3. Code Integrity & Performance
-- [ ] **Battery & CPU conscious:** DynamicNotch is a background menu/notch app. Changes introduce NO tight loops, busy-waiting, redundant timers, or excessive background polling.
+- [ ] **Battery & CPU conscious:** notch is a background menu/notch app. Changes introduce NO tight loops, busy-waiting, redundant timers, or excessive background polling.
 - [ ] **Memory & Concurrency:** No retain cycles or memory leaks (proper `[weak self]` in closures and Combine/Notification pipelines). UI updates are guaranteed on `@MainActor`.
 - [ ] **Zero unnecessary dependencies:** New external packages/frameworks are avoided unless strictly justified and discussed beforehand.
 
 #### 4. Code Quality & Standards
-- [ ] Follows project architecture (`DynamicNotch/Features/...` and MVVM).
+- [ ] Follows project architecture (`notch/Features/...` and MVVM).
 - [ ] Follows Swift API Design Guidelines (no force unwraps `!`, clean naming, 4 spaces indent).
 - [ ] Cleaned up all debug `print()` statements, test flags, and commented-out code.
 
