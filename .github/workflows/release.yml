@@ -14,8 +14,8 @@ concurrency:
   cancel-in-progress: false
 jobs:
   release:
-    if: inputs.allow_non_notarized
-    runs-on: macos-latest
+    if: inputs.allow_non_notarized && github.ref == 'refs/heads/main'
+    runs-on: [self-hosted, macOS, ARM64, mac-runner]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

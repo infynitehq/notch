@@ -6,7 +6,9 @@ permissions:
   contents: read
 jobs:
   test:
-    runs-on: macos-latest
+    # Only trusted main-branch pushes use the local runner pool.
+    # Pull requests and other branches stay on GitHub-hosted machines.
+    runs-on: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && fromJSON('["self-hosted","macOS","ARM64","mac-runner"]') || 'macos-latest' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
